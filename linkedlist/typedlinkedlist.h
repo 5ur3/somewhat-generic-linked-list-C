@@ -48,13 +48,13 @@ TYPE ll_pop_(NAME)(LinkedList *list) {
 void ll_setElement_(NAME)(LinkedListElement *element, TYPE value) {
     TYPE *value_p = malloc(sizeof(TYPE));
     *value_p = value;
-	return ll_setElement(element, value_p);
+    return ll_setElement(element, value_p);
 }
 #define ll_set_(T) TOKENPASTE(ll_set_, T)
 void ll_set_(NAME)(LinkedList *list, int index, TYPE value) {
-	TYPE *value_p = malloc(sizeof(TYPE));
+    TYPE *value_p = malloc(sizeof(TYPE));
     *value_p = value;
-	return ll_set(list, index, value_p);
+    return ll_set(list, index, value_p);
 }
 
 #ifdef NAME_DEFINED_HERE
