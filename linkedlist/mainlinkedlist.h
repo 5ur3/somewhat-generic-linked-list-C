@@ -16,9 +16,9 @@ void _ll_init(LinkedList *list) {
     list->first = 0;
     list->size = 0;
 }
-LinkedList ll_create() {
-    LinkedList list;
-    _ll_init(&list);
+LinkedList* ll_create() {
+    LinkedList *list = malloc(sizeof(LinkedList));
+    _ll_init(list);
     return list;
 }
 LinkedListElement *ll_get(LinkedList *list, int index) {
@@ -93,6 +93,7 @@ LinkedListElement *ll_pop(LinkedList *list) {
             list->size = 0;
         } else {
             list->last = list->last->prev;
+			list->last->next = 0;
             list->size--;
         }
         return element;
@@ -104,6 +105,7 @@ void ll_destroy(LinkedList *list) {
         free(element->value);
         free(element);
     }
+	free(list);
 }
 void ll_remove(LinkedList *list, int index) {
     if (index < 0 || index >= list->size)
